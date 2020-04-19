@@ -78,7 +78,7 @@ var config = {
         {
             id: 'wms-legends',
             title: 'Legend Images to Guide Interpretation',
-            image: './images/two_legends.png',
+            image: './images/currents_legends.png',
             description: "Every WMS style and data combination has an associated legend image to help users interpret the layer. \
             <br><br>\
             The Kuroshio and Oyashio currents.",
@@ -114,8 +114,8 @@ var config = {
             The relationship between wind and waves is particularly evident here, with larger waves (the red areas) often forming in and following concentrated regions of strong winds. \
             The condensed area of heavy weather moving from top left to bottom right is actually showing Tropical Cyclone Harold as it travels from Fiji into the open ocean.",
             location: {
-                center: [-180, -37.16706],
-                zoom: 2.74,
+                center: [160, -42],
+                zoom: 5.0,
                 pitch: 12.50,
                 bearing: 0.63
             },
