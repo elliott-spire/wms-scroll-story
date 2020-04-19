@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Spire Weather WMS</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel="shortcut icon" href="images/spire_symb_red.png">
+    <!-- libraries -->
+    <script src='lib/mapbox-gl-v1.5.0.js'></script>
+    <link href='lib/mapbox-gl-v1.5.0.css' rel='stylesheet' />
+    <script src="lib/intersection-observer-0.5.1.js"></script>
+    <script src="lib/scrollama-2.2.1.js"></script>
+    <!-- main app -->
+    <link href='css/main.css' rel='stylesheet' />
+</head>
+<body>
+    <a id="logo" href="https://spire.com/weather/" target="_blank" title="Spire Global"></a>
+    <script>
+        function afterMapLoad() {
+
+            // var frameRate = 0.5;
+            // var currentImage = 1;
+             
+            // function getPath() {
+            //     return (
+            //         './images/wms/' +
+            //         currentImage +
+            //         '.png'
+            //     );
+            // }
+
+            // Chapter 1
+            map.addSource('source1', {
+                type: 'image',
+                url: './images/totalprecip.png',
+                // url: getPath(),
+                coordinates: [
+                    [-67.55707060696835, 10.124468482039887],
+                    [-25.80385081069517, 10.124468482039887],
+                    [-25.80385081069517, -17.99139833598251],
+                    [-67.55707060696835, -17.99139833598251]
+                ]
+            });
+
+            map.addLayer({
+                id: 'layer1',
+                source: 'source1',
+                type: 'raster',
+                paint: {
+                    // initialize invisible
+                    "raster-opacity": 0
+                }
+            });
+
+            // Chapter 2
+            map.addSource('source2', {
+                type: 'image',
+                url: './images/windbarbs.png',
+                coordinates: [
+                    [3.3227689837131686, -28.140036984046468],
+                    [102.09880169662617, -28.140036984046468],
+                    [102.09880169662617, -64.50414638338462],
+                    [3.3227689837131686, -64.50414638338462]
+                ]
+            });
+            map.addLayer({
+                id: 'layer2',
+                source: 'source2',
+                type: 'raster',
+                paint: {
+                    // initialize invisible
+                    "raster-opacity": 0
+                }
+            });
+
+            // Chapter 3
+            map.addSource('source3', {
+                type: 'image',
+                url: './images/oceancurrents.png',
+                coordinates: [
+                    [123.89566983250317, 53.76021778811605],
+                    [172.18303544045082, 53.76021778811605],
+                    [172.18303544045082, 14.614874815046363],
+                    [123.89566983250317, 14.614874815046363]
+                ]
+            });
+            map.addLayer({
+                id: 'layer3',
+                source: 'source3',
+                type: 'raster',
+                paint: {
+                    // initialize invisible
+                    "raster-opacity": 0
+                }
+            });
+
+            // setInterval(function() {
+            //     currentImage += 1;
+            //     if (currentImage > 29) {
+            //         currentImage = 1;
+            //     }
+            //     map.getSource('myImageSource').updateImage({ url: getPath() });
+            // }, 1000 / frameRate);
+        }
+    </script>
+
+    <div id="map"></div>
+    <div id="story"></div>
+    <script src="./config.js"></script>
+    <script src="js/storytelling.js"></script>
+
+</body>
+</html>
