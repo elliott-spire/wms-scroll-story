@@ -94,6 +94,49 @@
                 }
             });
 
+            // Chapter 4
+            map.addSource('source4', {
+                type: 'image',
+                url: './images/wms_sequence/2020-04-20_00.png',
+                coordinates: [
+                    [-82.09549302316059, 67.53009418142705],
+                    [-23.49546798928307, 67.53009418142705],
+                    [-23.49546798928307, 24.018475795878345],
+                    [-82.09549302316059, 24.018475795878345]
+                ]
+            });
+            map.addLayer({
+                id: 'layer4',
+                source: 'source4',
+                type: 'raster',
+                paint: {
+                    // initialize invisible
+                    "raster-opacity": 0
+                }
+            });
+
+            // Chapter 5
+            map.addSource('source5', {
+                type: 'image',
+                url: './images/europewinds.png',
+                coordinates: [
+                    [0.10824963889190084, 58.2322303668181],
+                    [30.736990385045683, 58.2322303668181],
+                    [30.736990385045683, 29.98794598327477],
+                    [0.10824963889190084, 29.98794598327477]
+                ]
+            });
+            map.addLayer({
+                id: 'layer5',
+                source: 'source5',
+                type: 'raster',
+                paint: {
+                    // initialize invisible
+                    "raster-opacity": 0
+                }
+            });
+
+
             // setInterval(function() {
             //     currentImage += 1;
             //     if (currentImage > 29) {

@@ -17,9 +17,13 @@ var config = {
             description: "Web Map Service (WMS) layers are pre-styled, geo-referenced data visualizations. \
             In this case, the data being visualized is from Spire Weather's global weather forecast model. \
             WMS layers are provided in a standardized format developed by the international Open Geospatial Consortium (OGC), making them perfect for integrating with existing map software. \
+            WMS is just one of the standards specified by the OGC Web Services Context Document (OWS Context).\
             <br><br>\
-            Here we see a Spire Weather WMS layer showing Total Accumulated Precipitation over a 7-day forecast. \
-            In the maritime industry, precipitation can be a major cause of port slowdowns, especially in regions known for grain and iron ore exports which are generally not loaded in heavy rain.",
+            Here we see one of Spire Weather's WMS layers showing Total Accumulated Precipitation over a 7-day forecast. \
+            Precipitation comes in many forms, but at the current latitude we can be sure that this means rain. \
+            In the maritime industry, precipitation has the potential to cause significant port slowdowns. \
+            Aside from its effect on overall efficiency, it can also cause direct damage to commodity exports such as grain and iron ore which are generally not loaded in heavy rain. \
+            ",
             location: {
                 center: [-61, 1],
                 zoom: 3.80,
@@ -54,8 +58,9 @@ var config = {
             <br><br>\
             This cropped WMS area encompasses Cape Horn in South Africa, which has long been notorious as one of the most dangerous shipping routes in the world. \
             Because of the fact that surface winds below 40°S latitude are able to move from west to east with minimal interruption from land, they often reach much higher speeds than they would in other regions. \
-            In fact, the Antarctic peninsula and the Andes Mountains in South America can actually funnel such winds directly into Cape Horn from the Drake Passage. \
-            And to make matters worse, sustained wind strength and duration build up a large amount of energy beneath the ocean’s surface, forming deep swell waves which become even more hazardous when they reach the relatively shallow waters around Cape Horn.",
+            In fact, the Antarctic peninsula and the Andes Mountains in South America can actually funnel these winds directly into Cape Horn from the Drake Passage. \
+            And to make matters worse, sustained wind strength and duration build up a large amount of energy beneath the ocean’s surface, forming deep swell waves which become even more hazardous when they reach the relatively shallow waters around Cape Horn.\
+            ",
             location: {
                 center: [20.91618, -50.33003],
                 zoom: 2.7,
@@ -79,9 +84,18 @@ var config = {
             id: 'wms-legends',
             title: 'Legend Images to Guide Interpretation',
             image: './images/currents_legends.png',
-            description: "Every WMS style and data combination has an associated legend image to help users interpret the layer. \
+            description: "With the exception of contour lines, Spire Weather's WMS styles do not display numerical data values within the visualizations themselves. \
+            Instead, every WMS style and data combination has an associated legend to help users interpret the information conveyed. \
+            Legends are provided as standard image assets that can be integrated with applications in a variety of ways. \
+            In Esri's ArcGIS software, legend images are displayed in a sidebar along with information about the other visible layers. \
+            In the screenshot above, legend images have been turned into draggable UI components that can be moved around on the map itself. \
             <br><br>\
-            The Kuroshio and Oyashio currents.",
+            The WMS layers depicted here are 2 different styles for the same Ocean Currents data source. \
+            The base layer shows Ocean Currents velocity with color, while the vector lines indicate velocity and direction through the relative size and orientation of the arrows. \
+            Here we see the north flowing Kuroshio Current as it collides with the cold subarctic Oyashio Current off the coast of Japan. \
+            Together, these form the North Pacific Current, also referred to as the North Pacific Drift, which flows from east to west towards North America. \
+            Eventually it splits again, with the Alaska Current flowing northward and the California Current going south.\
+            ",
             location: {
                 center: [149, 22.5],
                 zoom: 3.6,
@@ -112,15 +126,29 @@ var config = {
             The animation above shows 2 different Spire WMS layers visualizing a 7-day forecast with 6-hour intervals. \
             Black contour lines depict Wind Gusts on top of Significant Wave Height in color. \
             The relationship between wind and waves is particularly evident here, with larger waves (the red areas) often forming in and following concentrated regions of strong winds. \
-            The condensed area of heavy weather moving from top left to bottom right is actually showing Tropical Cyclone Harold as it travels from Fiji into the open ocean.",
+            The condensed area of heavy weather moving from top left to bottom right is actually showing Tropical Cyclone Harold as it travels from Fiji into the open ocean. \
+            <br><br>\
+            On the map, we see the same 2 data variables with their styles reversed, so the contour lines show Significant Wave Height with Wind Gusts in color underneath. \
+            Use the time controls to navigate through an entire medium-range high-frequency 7-day forecast (1 hour intervals for the first 30 hours and 6 hour intervals afterwards).\
+            ",
             location: {
-                center: [160, -42],
-                zoom: 5.0,
-                pitch: 12.50,
-                bearing: 0.63
+                center: [-34, 51],
+                zoom: 3.2,
+                pitch: 50.00,
+                bearing: -180.00
             },
-            onChapterEnter: [],
-            onChapterExit: []
+            onChapterEnter: [
+                {
+                    layer: 'layer4',
+                    opacity: 0.80
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'layer4',
+                    opacity: 0
+                }
+            ]
         },
         {
             id: 'wms-ais',
@@ -132,13 +160,23 @@ var config = {
             <br> \
             <a href='https://spire.com/weather/'>https://spire.com/weather</a>",
             location: {
-                center: [2, 52],
-                zoom: 7.0,
-                pitch: 12.50,
-                bearing: 0.63
+                center: [4.3, 43],
+                zoom: 4.2,
+                pitch: 34.50,
+                bearing: 0
             },
-            onChapterEnter: [],
-            onChapterExit: []
+            onChapterEnter: [
+                {
+                    layer: 'layer5',
+                    opacity: 0.80
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'layer5',
+                    opacity: 0
+                }
+            ]
         }
     ]
 };
