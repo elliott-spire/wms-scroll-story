@@ -62,20 +62,28 @@ var config = {
             And to make matters worse, sustained wind strength and duration build up a large amount of energy beneath the ocean’s surface, forming deep swell waves which become even more hazardous when they reach the relatively shallow waters around Cape Horn.\
             ",
             location: {
-                center: [20.91618, -50.33003],
-                zoom: 2.7,
-                pitch: 8.00,
+                center: [20, -150.33003],
+                zoom: 2.8,
+                pitch: 0.00,
                 bearing: 0.00
             },
             onChapterEnter: [
                 {
                     layer: 'layer2',
-                    opacity: 0.80
+                    opacity: 0.9
+                },
+                {
+                    layer: 'vessels2',
+                    opacity: 0.9
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'layer2',
+                    opacity: 0
+                },
+                {
+                    layer: 'vessels2',
                     opacity: 0
                 }
             ]
@@ -121,7 +129,7 @@ var config = {
             image: './images/SpireWMS_Waves+WindGustContours_12fps.gif',
             description: "Multiple WMS visualizations are created for each weather forecast, and users can choose which time to show or play through all of them sequentially. \
             Furthermore, multiple forecasts are provided at a time. \
-            Since 4 forecasts are issued each day (at hours 00, 06, 12, and 18) and 4 days are avilable at once (the current day and 3 preceding ones) users can have up to 16 full 7-day global forecasts to choose from. \
+            Since 4 short-range forecasts are issued each day (at hours 00, 06, 12, and 18) and 4 days are available at once (the current day and 3 preceding ones) users can have up to 16 full 7-day global forecasts to choose from. \
             <br><br>\
             The animation above shows 2 different Spire WMS layers visualizing a 7-day forecast with 6-hour intervals. \
             Black contour lines depict Wind Gusts on top of Significant Wave Height in color. \
@@ -132,20 +140,28 @@ var config = {
             Use the time controls to navigate through an entire medium-range high-frequency 7-day forecast (1 hour intervals for the first 30 hours and 6 hour intervals afterwards).\
             ",
             location: {
-                center: [-34, 51],
-                zoom: 3.2,
-                pitch: 50.00,
-                bearing: -180.00
+                center: [-50, 50],
+                zoom: 3.0,
+                pitch: 0.00,
+                bearing: 90.00
             },
             onChapterEnter: [
+                // {
+                //     layer: 'layer4',
+                //     opacity: 0.80
+                // },
                 {
-                    layer: 'layer4',
+                    layer: 'vessels4',
                     opacity: 0.80
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'layer4',
+                    opacity: 0
+                },
+                {
+                    layer: 'vessels4',
                     opacity: 0
                 }
             ]
@@ -160,15 +176,15 @@ var config = {
             <br> \
             <a href='https://spire.com/weather/'>https://spire.com/weather</a>",
             location: {
-                center: [4.3, 43],
-                zoom: 4.2,
-                pitch: 34.50,
+                center: [-209.841277370518, -25.25693038289896],
+                zoom: 2.5,
+                pitch: 0,
                 bearing: 0
             },
             onChapterEnter: [
                 {
                     layer: 'layer5',
-                    opacity: 0.80
+                    opacity: 1.
                 }
             ],
             onChapterExit: [

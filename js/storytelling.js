@@ -135,33 +135,41 @@ if (config.showMarkers) {
 var scroller = scrollama();
 
 map.on("load", function() {
-    // setup the instance, pass callback functions
-    scroller
-    .setup({
-        step: '.step',
-        offset: 0.5,
-        progress: true
-    })
-    .onStepEnter(response => {
-        var chapter = config.chapters.find(chap => chap.id === response.element.id);
-        response.element.classList.add('active');
-        map.flyTo(chapter.location);
-        if (config.showMarkers) {
-            marker.setLngLat(chapter.location.center);
+    // load the vessel image
+    map.loadImage('../images/blue_ship.png',
+        function(error, image) {
+            if (error) { throw error; }
+            // add the vessel image to the map context
+            map.addImage('vessel', image);
+            // add custom layers
+            afterMapLoad();
+            // setup the instance, pass callback functions
+            scroller
+            .setup({
+                step: '.step',
+                offset: 0.5,
+                progress: true
+            })
+            .onStepEnter(response => {
+                var chapter = config.chapters.find(chap => chap.id === response.element.id);
+                response.element.classList.add('active');
+                map.flyTo(chapter.location);
+                if (config.showMarkers) {
+                    marker.setLngLat(chapter.location.center);
+                }
+                if (chapter.onChapterEnter.length > 0) {
+                    chapter.onChapterEnter.forEach(setLayerOpacity);
+                }
+            })
+            .onStepExit(response => {
+                var chapter = config.chapters.find(chap => chap.id === response.element.id);
+                response.element.classList.remove('active');
+                if (chapter.onChapterExit.length > 0) {
+                    chapter.onChapterExit.forEach(setLayerOpacity);
+                }
+            });
         }
-        if (chapter.onChapterEnter.length > 0) {
-            chapter.onChapterEnter.forEach(setLayerOpacity);
-        }
-    })
-    .onStepExit(response => {
-        var chapter = config.chapters.find(chap => chap.id === response.element.id);
-        response.element.classList.remove('active');
-        if (chapter.onChapterExit.length > 0) {
-            chapter.onChapterExit.forEach(setLayerOpacity);
-        }
-    });
-    // do some other stuff (custom function)
-    afterMapLoad();
+    );
 });
 
 // setup resize event
