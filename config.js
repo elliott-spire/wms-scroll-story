@@ -108,7 +108,7 @@ var config = {
         {
             id: 'wms-style-options',
             title: 'Multiple Style Options',
-            image: './images/relhum_whitecontour.png',
+            image: './images/relhum-white.png',
             description: "\
             As you may have noticed, previous examples showed secondary styles (e.g. contour lines, wind barbs) in both black and white. \
             This is an important feature to keep in mind when composing views with Spire WMS layers, since there are situations when one or the other will be preferable. \
